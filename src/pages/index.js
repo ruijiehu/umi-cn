@@ -5,7 +5,7 @@ export default function() {
     <div className={styles.normal}>
       <div className={styles.welcome} />
       <ul className={styles.list}>
-        <li>咋回事儿啊，怎么不自动生成路由</li>
+        <li>好的好的，别烦了</li>
         <li>
             Getting Started
         </li>

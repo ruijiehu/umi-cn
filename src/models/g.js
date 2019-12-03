@@ -1,23 +1,29 @@
-import { getList } from '../services/api'
+import services from '../services/api'
 export default {
   namespace: 'globalData',
   state:{
-    newsList: []
+    // newsList: []
+    test:''
   },
   effects: {
     *getNewsList({payload}, {call, put}){
-      const data = yield call(getList, payload)
-      yield put({
-        type: "getNews",
-        payload: data
-      })
+      const {data} = yield call(services.getList, payload)
+      // console.log(data);
+      if(data.status === 200 && data){
+        yield put({
+          type: "getNews",
+          payload: {
+            newsList:data.data.list
+          }
+        })
+      }
     }
   },
   reducers: {
-    getNews(state, action) {
+    getNews(state, {payload}) {
       return {
         ...state,
-        newsList: action.payload
+        ...payload
       }
     }
   }

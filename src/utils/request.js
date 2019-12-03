@@ -1,5 +1,5 @@
-import fetch from 'dva/fetch';
-// require("dva").fetch
+// import fetch from 'dva/fetch';
+import { fetch } from 'dva';
 
 function parseJSON(response) {
   return response.json();
@@ -28,6 +28,6 @@ export default function request(url, options) {
   return fetch(url, { ...options })
     .then(checkStatus)
     .then(parseJSON)
-    .then((data) => ({ data }));
-    // .catch((err) => ({ err }));
+    .then((data) => ({ data }))
+    .catch((err) => ({ err }))
 }
